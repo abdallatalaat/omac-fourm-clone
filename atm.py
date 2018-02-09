@@ -2,11 +2,6 @@
 This is basically practicing some python ~
 atm.py
 contains function withdraw that prints the banknotes returned by atm
-example: atm(500, 215) should return:
-    give 100
-    give 100
-    give 10
-    give 5
 """
 def withdraw(money, request):
     """
