@@ -12,6 +12,7 @@ def withdraw(money, request):
     """
     prints banknote value returned by atm for a request if atm has money
     this works with INTGERS ONLY
+    returns the rest of money in balance
     """
     # local variables
     accepted_notes = [100, 50, 10, 5, 1]
@@ -27,8 +28,12 @@ def withdraw(money, request):
         print "atm doesn't have enough money"
         return
 
+    print "Current balance:", money
+
     # main loop
     for note in accepted_notes:
         while request >= note:
             request -= note
             print "give", note
+
+    return money - request
