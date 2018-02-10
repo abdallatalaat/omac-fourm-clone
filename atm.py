@@ -12,6 +12,7 @@ class atm:
         self._bank_name = bank_name
         print "atm for: ({}) initialized successfully with balance: ({}).\n".format(self._bank_name, self._balance)
 
+
     def withdraw(self, request):
         """
         prints banknote value returned by atm for a request if atm has money
@@ -44,8 +45,3 @@ class atm:
         print "============================"
         print "balance after withdraw:", self._balance
         print "============================\n"
-
-atm1 = atm("a bank", 1000)
-atm1.withdraw(355)
-atm1.withdraw(355)
-atm1.withdraw(355)
