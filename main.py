@@ -1,7 +1,9 @@
-from fourms import models as m
+from fourms import*
 
-mem0 = m.Member(0, "mem0", 13)
-mem1 = m.Member(1, "mem1", 34)
-mem2 = m.Member(2, "mem2", 23)
-for i in range(10):
-    exec('post' + str(i) + '= mem0.new_post(i, "POST TITLE", "POST CONTENT")')
+m_store = MemberStore()
+for i in range(4):
+    m_store.add(Member(i, "mem"+str(i), i+15))
+
+p_store = PostStore()
+for i in range(4):
+    p_store.add(Post(i, "POST "+str(i), i+15))
