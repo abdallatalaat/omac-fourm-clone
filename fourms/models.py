@@ -1,8 +1,8 @@
 class Member:
     """docstring for Member. Every member has name and age. Can be edited"""
-    def __init__(self, id, name, age):
+    def __init__(self, name, age):
         self._name = name
-        self._id = id
+        self._id = 0
         self._age = age
         self._posts = {}
 
@@ -11,8 +11,8 @@ class Member:
 
 class Post:
     """docstring for Post."""
-    def __init__(self, post_id, title, main_post):
-        self._id = post_id
+    def __init__(self, title, main_post):
+        self._id = 0
         self._title = title
         self._main_post = main_post
         print "NEW POST!!\n"
