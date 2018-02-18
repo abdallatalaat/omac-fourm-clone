@@ -3,7 +3,7 @@ class MemberStore:
     m_id = 0
 
     def get_all(self):
-        return members
+        return MemberStore.members
 
     def add(self, member):
         MemberStore.m_id += 1
@@ -16,15 +16,25 @@ class MemberStore:
     def delete(self, id):
         del MemberStore.members[id - 1]
 
+    def update(self, member):
+        MemberStore.members[member._id - 1] = member
+
     def get_by_id(self, id):
         return MemberStore.members[id - 1]
+
+    def get_by_name(self, member_name):
+        fin = []
+        for member in MemberStore.members:
+            if member._name == member_name:
+                fin.append(member)
+        return fin
 
 class PostStore:
     posts = []
     p_id = 0
 
     def get_all(self):
-        return posts
+        return PostStore.posts
 
     def add(self, post):
         PostStore.p_id += 1
