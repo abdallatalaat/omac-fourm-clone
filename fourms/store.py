@@ -11,7 +11,7 @@ class MemberStore:
         MemberStore.members.append(member)
 
     def entity_exists(self, member):
-        return member is MemberStore.members[member._id]
+        return member is self.get_all()[member._id]
 
     def delete(self, id):
         del MemberStore.members[id - 1]
@@ -28,6 +28,21 @@ class MemberStore:
             if member._name == member_name:
                 fin.append(member)
         return fin
+    def get_members_with_posts(self, all_posts):
+        members = list(self.get_all())
+        for member in members:
+            for post in posts:
+                if post.member_id == member._id:
+                    member._posts.append(post)
+        for member in members:
+            yield member
+
+    def get_top_two(self, all_posts):
+        members = list(self.get_members_with_posts(all_posts))
+        member_with_posts.sort(key = lambda member: len(member._posts), reverse=True)
+
+        for i in range(2):
+            yield members[i]
 
 class PostStore:
     posts = []
