@@ -1,33 +1,43 @@
-class MemberStore:
-    members = []
-    m_id = 0
+class BaseStore:
+
+    def __init__(self, data_provider, last_id):
+        self._data_provider = data_provider
+        self._last_id = last_id
 
     def get_all(self):
-        return MemberStore.members
+        return self._data_provider
 
-    def add(self, member):
-        MemberStore.m_id += 1
-        member._id = MemberStore.m_id
-        MemberStore.members.append(member)
+    def add(self, entity):
+        self._last_id += 1
+        entity._id = self._last_id
+        self._data_provider.append(entity)
 
-    def entity_exists(self, member):
-        return member is self.get_all()[member._id]
+    def entity_exists(self, entity):
+        return entity is self.get_all()[entity._id]
 
     def delete(self, id):
-        del MemberStore.members[id - 1]
+        del self._data_provider[id - 1]
 
-    def update(self, member):
-        MemberStore.members[member._id - 1] = member
+    def update(self, entity):
+        self._data_provider[entity._id - 1] = entity
 
     def get_by_id(self, id):
-        return MemberStore.members[id - 1]
+        return self._data_provider[id - 1]
+
+
+class MemberStore(BaseStore):
+    members = []
+    last_id = 0
+
+    def __init__(self):
+        super().__init__(MemberStore.members, MemberStore.last_id)
+
 
     def get_by_name(self, member_name):
-        fin = []
         for member in MemberStore.members:
             if member._name == member_name:
-                fin.append(member)
-        return fin
+                yield member
+
     def get_members_with_posts(self, all_posts):
         members = list(self.get_all())
         for member in members:
@@ -44,18 +54,9 @@ class MemberStore:
         for i in range(2):
             yield members[i]
 
-class PostStore:
+class PostStore(BaseStore):
     posts = []
-    p_id = 0
+    last_id = 0
 
-    def get_all(self):
-        return PostStore.posts
-
-    def add(self, post):
-        PostStore.p_id += 1
-        post._id = PostStore.p_id
-        PostStore.posts.append(post)
-
-
-    def get_by_id(self, id):
-        return PostStore.posts[id - 1]
+    def __init__(self):
+        super().__init__(PostStore.posts, PostStore.last_id)

@@ -1,3 +1,4 @@
+import datetime
 class Member:
     """docstring for Member. Every member has name and age. Can be edited"""
     def __init__(self, name, age):
@@ -12,6 +13,7 @@ class Member:
 class Post:
     """docstring for Post."""
     def __init__(self, title, main_post,member_id=0):
+        self.date = datetime.datetime.now()
         self._id = 0
         self._title = title
         self._main_post = main_post
