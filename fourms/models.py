@@ -18,7 +18,7 @@ class Post:
         self._title = title
         self._main_post = main_post
         self.member_id = member_id
-        print "NEW POST!!\n"
+        print ("NEW POST!!\n")
 
     def __str__(self):
         return "POST\nWritten By: {}\nTitle: {}\nPost: {}\n".format(self._owner_name, self._title, self._main_post)
