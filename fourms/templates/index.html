@@ -1,39 +1,65 @@
 <!doctype html>
+<html>
 
-<html lang="en">
 <head>
-  <meta charset="utf-8">
-
-  <title>OMAC Fourm Clone</title>
-
-  <link rel="stylesheet" href="css/index.css">
-
+    <meta charset="utf-8">
+    <title>OMAC Clone</title>
 </head>
+
 <body>
-    <h1 style="text-align: center">OMAC Fourm Clone</h1>
-    <h2><a href="">Profile</a></h2> <h2><a href="">Members</a></h2>
-   <a href="">New Post</a>
-    <table style="width:100%">
-  <tr>
-    <th>Title</th>
-    <th>Edit</th> 
-    <th>Delete</th>
-  </tr>
-  <tr>
-    <td>Topic 1</td>
-    <td><a href="">Edit</a></td> 
-    <td><a href="">Delete</a></td>
-  </tr>
-  <tr>
-    <td>Topic 2</td>
-    <td><a href="">Edit</a></td> 
-    <td><a href="">Delete</a></td>
-  </tr>
-  <tr>
-    <td>Topic 3</td>
-    <td><a href="">Edit</a></td> 
-    <td><a href="">Delete</a></td>
-  </tr>
-</table>
+
+    <div class="centered-item">
+        <h1>OneMillion</h1>
+    </div>
+
+    <div class="centered-item">
+        <a href="#">Members</a>
+
+        <a href="#">Profile</a>
+    </div>
+
+    <div class="content">
+        <a href="#">Create</a>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+
+                    <th>
+                        Edit
+                    </th>
+
+                    <th>
+                        Delete
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+              {% for post in posts %}
+      <tr>
+          <td>
+              {{post.title}}
+          </td>
+
+          <td>
+              <a href="#">edit</a>
+          </td>
+
+          <td>
+              <a href="#">delete</a>
+          </td>
+      </tr>
+  {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
 </body>
+
 </html>
