@@ -2,6 +2,7 @@ from flask import Flask, render_template
 import models
 import store
 app = Flask(__name__)
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 post_store = store.PostStore()
 post_store.add(models.Post("Life", "Life is alawys great"))
