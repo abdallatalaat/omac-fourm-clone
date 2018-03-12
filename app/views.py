@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
-import models
-import store
-from app import *
+from app import models
+from app import store
+from app import app
 
-app = Flask(__name__)
 
 @app.route("/")
 @app.route("/index")
