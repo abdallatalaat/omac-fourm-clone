@@ -1,4 +1,4 @@
-from app import models
+from app import models, store
 
 dummy_members = [
     models.Member("Mohammed", 20),
